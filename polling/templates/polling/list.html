@@ -1,0 +1,25 @@
+
+{% extends "base.html" %}
+{% block content %}
+<h1>Polls</h1>
+{% for poll in poll_list %}
+    <div class="poll">
+        <h2>
+            <a href="{% url 'poll_detail' poll.pk %}">{{ poll.title }}</a>
+        </h2>
+    </div>
+{% endfor %}
+{% endblock %}
+
+
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Title</title>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--</body>-->
+<!--</html>-->
