@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from blogging.models import Post, Category
 import datetime
 from django.utils.timezone import utc
-import pysnooper
+# import pysnooper
 
 
 class PostTestCase(TestCase):
@@ -59,7 +59,7 @@ class FrontEndTestCase(TestCase):
             else:
                 self.assertNotContains(resp, title)
 
-    @pysnooper.snoop(depth=3)
+    # @pysnooper.snoop(depth=3)
     def test_details_only_published(self):
         for count in range(1, 11):
             title = f"Post {count} Title"
