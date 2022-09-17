@@ -30,9 +30,12 @@ from django.views.generic.detail import DetailView
 #     body = template.render(context)
 #     return HttpResponse(body, content_type="text/html")
 
+
 class PostListView(ListView):
-    queryset = Post.objects.exclude(published_date__exact=None).order_by('-published_date')
-    template_name = 'blogging/list.html'
+    queryset = Post.objects.exclude(published_date__exact=None).order_by(
+        "-published_date"
+    )
+    template_name = "blogging/list.html"
 
 
 # this is a function that was changed into a class-based
@@ -42,11 +45,11 @@ class PostListView(ListView):
 #     context = {'posts': posts}
 #     return render(request, 'blogging/list.html', context)
 
+
 class PostDetailView(DetailView):
     model = Post
-    template_name = 'blogging/detail.html'
+    template_name = "blogging/detail.html"
     queryset = Post.objects.filter(published_date__isnull=False)
-
 
 
 # def detail_view(request, post_id):

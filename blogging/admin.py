@@ -13,13 +13,22 @@ class CategoryInline(admin.TabularInline):
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
     # category = str(Category.name)  somehow you should be able to link posts/categories and show them in admin
-    list_display = ('title', 'author', 'created_date', 'modified_date', 'published_date')
-    inlines = [CategoryInline, ]
+    list_display = (
+        "title",
+        "author",
+        "created_date",
+        "modified_date",
+        "published_date",
+    )
+    inlines = [
+        CategoryInline,
+    ]
 
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    exclude = ('posts',)  # excludes 'posts' from showing up in the category admin page
+    exclude = ("posts",)  # excludes 'posts' from showing up in the category admin page
+
 
 # admin.site.register(Post)      # register Post model is now being done with the decorator
 # # admin.site.register(Category)  # register Category model is now being done with the decorator

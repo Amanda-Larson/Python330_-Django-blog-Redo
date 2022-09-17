@@ -17,7 +17,7 @@ class Post(models.Model):
 class Category(models.Model):
     name = models.CharField(max_length=128)
     description = models.TextField(blank=True)
-    posts = models.ManyToManyField(Post, blank=True, related_name='categories')
+    posts = models.ManyToManyField(Post, blank=True, related_name="categories")
 
     def __str__(self):
         # Uses the Category name instead of 'Category 1' in the admin view
@@ -25,4 +25,4 @@ class Category(models.Model):
 
     class Meta:
         # Tells Django how to properly pluralize in the admin page
-        verbose_name_plural = 'Categories'
+        verbose_name_plural = "Categories"
