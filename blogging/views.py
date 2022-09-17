@@ -63,13 +63,14 @@ class PostDetailView(DetailView):
 #     context = {'post': post}
 #     return render(request, 'blogging/detail.html', context)
 
+
 class LatestBlogUpdates(Feed):
     title = "Latest blog updates"
     link = "/posts/"
     description = "Updates and additions to the blog."
 
     def items(selfself):
-        return Post.objects.order_by('-published_date')[:5]
+        return Post.objects.order_by("-published_date")[:5]
 
     def item_title(selfself, item):
         return item.title
