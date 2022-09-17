@@ -4,6 +4,8 @@ from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.template import loader
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
+from django.urls import reverse
+from django.contrib.syndication.views import Feed
 
 
 # def list_view(request):
@@ -60,3 +62,20 @@ class PostDetailView(DetailView):
 #         raise Http404
 #     context = {'post': post}
 #     return render(request, 'blogging/detail.html', context)
+
+class LatestBlogUpdates(Feed):
+    title = "Latest blog updates"
+    link = "/posts/"
+    description = "Updates and additions to the blog."
+
+    def items(selfself):
+        return Post.objects.order_by('-published_date')[:5]
+
+    def item_title(selfself, item):
+        return item.title
+
+    def item_description(self, item):
+        return item.published_date
+
+    def item_link(self, item):
+        return reverse("blog_detail", args=[item.pk])
