@@ -7,5 +7,5 @@ urlpatterns = [
     path(
         "posts/<int:pk>/", PostDetailView.as_view(), name="blog_detail"
     ),  # <int:post_id> captures digits as the post_id
-    path('latest/feed/', LatestBlogUpdates()),
+    path("latest/feed/", LatestBlogUpdates()),
 ]
